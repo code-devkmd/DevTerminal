@@ -6,7 +6,10 @@ build-backend = "setuptools.build_meta"
 name = "devterminal"
 version = "1.0.0"
 description = "Intelligent cross-platform terminal with auto-completion and command validation"
+readme = "README.md"
+license = {file = "LICENSE"}
 authors = [{name = "Code-Dev"}]
+requires-python = ">=3.7"
 dependencies = [
     "prompt_toolkit",
     "rich",
@@ -20,3 +23,6 @@ devterminal = "devcli.main:main"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["devcli*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.md", "LICENSE"]
