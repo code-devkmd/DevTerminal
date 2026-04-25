@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "devterminal"
+version = "1.0.0"
+description = "Intelligent cross-platform terminal with auto-completion and command validation"
+authors = [{name = "Code-Dev"}]
+dependencies = [
+    "prompt_toolkit",
+    "rich",
+    "colorama",
+    "pygments"
+]
+
+[project.scripts]
+devterminal = "devcli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["devcli*"]

@@ -1,0 +1,56 @@
+from devcli.core.shell import run_shell
+import time
+import os
+from colorama import Fore, Style, init
+
+init(autoreset=True)
+
+def type_text(text, delay=0.004):
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(delay)
+    print()
+
+def show_intro():
+    banner = Fore.GREEN + r"""
+██████╗ ███████╗██╗   ██╗████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗
+██╔══██╗██╔════╝██║   ██║╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║
+██║  ██║█████╗  ██║   ██║   ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║
+██║  ██║██╔══╝  ╚██╗ ██╔╝   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║
+██████╔╝███████╗ ╚████╔╝    ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗
+╚═════╝ ╚══════╝  ╚═══╝     ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
+""" + Style.RESET_ALL    
+
+    divider = f"{Fore.MAGENTA}{'─'*60}{Style.RESET_ALL}"
+
+    print(banner)
+    print(Fore.CYAN + "➤ DevTerminal")
+    print(Fore.YELLOW + "➤ Version   : 1.0.0")
+    print("➤ Engine    : DevCLI Core")
+    print("➤ Mode      : Interactive Shell + AutoComplete")
+    print("➤ Platform  : Windows Compatible" + Style.RESET_ALL)
+    print(divider)
+
+def boot_sequence():
+    steps = [
+        "[+] Initializing DevTerminal...",
+        "[+] Loading modules...",
+        "[+] Enabling TAB auto-completion...",
+        "[+] Checking environment...",
+        "[+] Ready."
+    ]
+
+    for step in steps:
+        print(Fore.GREEN + step + Style.RESET_ALL)
+        time.sleep(0.25)
+
+
+def main():
+    os.system('cls')
+    show_intro()
+    boot_sequence()
+    run_shell()
+
+
+if __name__ == "__main__":
+    main()

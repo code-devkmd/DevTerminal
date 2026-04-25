@@ -1,0 +1,16 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / Build folders
+dist/
+build/
+*.egg-info/
+
+# Environments
+venv/
+.env
+
+# DevTerminal specific
+.devterminal_history
