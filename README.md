@@ -19,7 +19,7 @@
 Install DevTerminal directly from PyPI using pip:
 
 ```bash
-pip install devterminal
+pip install devterminal-cli
 ```
 
 ## 🚀 Quick Start
