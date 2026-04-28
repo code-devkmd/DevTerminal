@@ -30,7 +30,7 @@ Once installed, simply launch the shell by typing:
 devterminal
 ```
 
-## Keyboard Shortcuts
+## 💻 Keyboard Shortcuts
 
 - TAB: Trigger the intelligent auto-completion engine.
 
@@ -52,3 +52,5 @@ devcli/
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+Don't forget to give a star ⭐🤗
