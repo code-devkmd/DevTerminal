@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **DevTerminal** is an intelligent, developer-centric terminal wrapper designed to bridge the gap between Windows and Unix-like environments. Built for programmers who switch contexts frequently, it eliminates "muscle memory" errors by adapting commands in real-time.
-
+    
 ## ✨ Key Features
 
 - **Smart Command Adaptation:** Automatically maps Linux commands (`ls`, `cat`, `clear`, `pwd`) to Windows equivalents (`dir`, `type`, `cls`, `cd`) with optional confirmation for destructive actions.
