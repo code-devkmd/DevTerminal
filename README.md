@@ -73,13 +73,13 @@ Fast startup • Smart error recovery • Port management • Project switching 
 ### From PyPI (Recommended)
 
 ```bash
-pip install devterminal
+pip install devterminal-cli
 ```
 
 ### From Source
 
 ```bash
-git clone https://github.com/yourusername/devterminal.git
+git clone https://github.com/code-devkmd/DevTerminal.git
 cd devterminal
 pip install -e .
 ```
@@ -104,7 +104,7 @@ All dependencies are installed automatically:
 
 ```bash
 # Install
-pip install devterminal
+pip install devterminal-cli
 
 # Run
 devterminal
