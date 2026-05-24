@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "devterminal"
-version = "1.0.0"
-description = "Intelligent cross-platform terminal with auto-completion and command validation"
+version = "2.0.0"
+description = "Intelligent cross-platform terminal with smart features for developers"
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [{name = "Code-Dev"}]
@@ -14,7 +14,8 @@ dependencies = [
     "prompt_toolkit",
     "rich",
     "colorama",
-    "pygments"
+    "pygments",
+    "psutil" 
 ]
 
 [project.scripts]
