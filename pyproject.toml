@@ -15,7 +15,8 @@ dependencies = [
     "rich",
     "colorama",
     "pygments",
-    "psutil" 
+    "psutil",
+    "pyperclip"
 ]
 
 [project.scripts]

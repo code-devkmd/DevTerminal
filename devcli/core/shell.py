@@ -10,6 +10,7 @@ from typing import Optional
 from prompt_toolkit import PromptSession
 from prompt_toolkit.formatted_text import HTML
 from prompt_toolkit.key_binding import KeyBindings
+from prompt_toolkit.clipboard.pyperclip import PyperclipClipboard
 from prompt_toolkit.lexers import PygmentsLexer
 from pygments.lexers.shell import BashLexer
 
@@ -39,6 +40,12 @@ except ImportError:
 
 # Key bindings
 kb = KeyBindings()
+
+@kb.add("c-v")
+def _(event):
+    event.current_buffer.paste_clipboard_data(
+        event.app.clipboard.get_data()
+    )
 
 @kb.add("right")
 def accept_suggestion(event):
@@ -101,6 +108,7 @@ def run_shell():
         complete_while_typing=COMPLETE_WHILE_TYPING,
         auto_suggest=DevAutoSuggest(),
         lexer=PygmentsLexer(BashLexer),
+        clipboard=PyperclipClipboard(),
         key_bindings=kb
     )
     
