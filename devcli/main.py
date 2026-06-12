@@ -15,19 +15,25 @@ def show_intro():
     ██████╔╝███████╗ ╚████╔╝    ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗
     ╚═════╝ ╚══════╝  ╚═══╝     ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
 {Style.RESET_ALL}"""
-
-    info = f"""{Fore.CYAN}➤ DevTerminal 2.0{Fore.YELLOW} | {Fore.CYAN}Type 'help' for commands{Style.RESET_ALL}"""
-
+    
+    info = f"""{Fore.CYAN}➤ DevTerminal
+{Fore.YELLOW}➤ Version   : 2.0.0
+➤ Engine    : DevCLI Core
+➤ Mode      : Interactive Shell + AutoComplete
+➤ Platform  : Cross-Platform{Style.RESET_ALL}
+{Fore.MAGENTA}{'─' * 60}{Style.RESET_ALL}
+"""
+    
     print(banner + info)
 
 def main():
     """Main entry point"""
     try:
-        # Clear screen
+        # Clear screen 
         os.system('cls' if os.name == 'nt' else 'clear')
         show_intro()
         run_shell()
-
+        
     except KeyboardInterrupt:
         print(f"\n{Fore.YELLOW}Goodbye!{Style.RESET_ALL}")
         sys.exit(0)

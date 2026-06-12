@@ -45,20 +45,15 @@ class CommandExecutor:
         Handle built-in commands
         Returns: (is_builtin, should_continue, new_path)
         """
-        # Help command
-        if cmd in ["help", "-h", "--help"]:
-            self._show_help()
-            return True, True, None
-
         # Exit command
         if cmd == "exit":
             return True, False, None
-
+        
         # Clear screen
         if cmd in ["clear", "cls"]:
             os.system("cls" if self.is_windows else "clear")
             return True, True, None
-
+        
         # Change directory
         if cmd == "cd":
             self._handle_cd(args)
@@ -98,68 +93,19 @@ class CommandExecutor:
     def _handle_cd(self, args: List[str]):
         """Handle cd command with history support"""
         current_dir = os.getcwd()
-
+        
         # Handle `cd -` (go to previous directory)
         if args and args[0] == "-":
             target = self.previous_dir
             console.print(f"[dim]{target}[/dim]")
         else:
             target = args[0] if args else os.path.expanduser("~")
-
+        
         if os.path.isdir(target):
             os.chdir(target)
             self.previous_dir = current_dir
         else:
             console.print(f"[red]Not a directory:[/red] {target}")
-
-    def _show_help(self):
-        """Show help information for DevTerminal commands"""
-        help_text = """
-[bold cyan]DevTerminal - Intelligent Cross-Platform Terminal[/bold cyan]
-
-[bold yellow]BUILT-IN COMMANDS:[/bold yellow]
-  [green]help, -h, --help[/green]     Show this help message
-  [green]exit[/green]                  Exit DevTerminal
-  [green]clear, cls[/green]            Clear the screen
-  [green]cd <path>[/green]             Change directory
-
-[bold yellow]SMART FEATURES:[/bold yellow]
-  [green]ports [filter][/green]        Show active ports or filter by process
-  [green]kill-port <port>[/green]      Kill process on specific port
-  [green]proj <name>[/green]           Switch to a project
-  [green]proj list[/green]             List all saved projects
-  [green]proj add <name> [path][/green] Add a new project
-  [green]http <url>[/green]            Test HTTP endpoints
-  [green]post <url> <json>[/green]     Send POST request
-  [green]headers <url>[/green]         Check response headers
-
-[bold yellow]GIT SHORTCUTS:[/bold yellow]
-  [green]gs[/green]   git status    [green]gp[/green]  git push
-  [green]ga[/green]   git add .     [green]gl[/green]  git log
-  [green]gc[/green]   git commit    [green]gd[/green]  git diff
-
-[bold yellow]FEATURES:[/bold yellow]
-  • Smart Error Recovery - Auto-corrects typos
-  • Auto-completion - Press Tab for suggestions
-  • Command History - Press Ctrl+R to search
-  • Git Integration - Shows current branch in prompt
-  • Copy/Paste - Full clipboard support
-
-[bold yellow]EXAMPLES:[/bold yellow]
-  $ ports                    # Show all active ports
-  $ kill-port 3000          # Kill process on port 3000
-  $ proj list               # List all projects
-  $ http localhost:3000/api # Test API endpoint
-  $ git psuh                # Typo? We'll suggest: git push
-
-[bold yellow]KEYBOARD SHORTCUTS:[/bold yellow]
-  Tab        - Show completions
-  Ctrl+R     - Search history
-  Ctrl+C     - Cancel current line
-  Ctrl+D     - Exit terminal
-  Up/Down    - Navigate history
-"""
-        console.print(help_text)
     
     def smart_type_handler(self, cmd: str, args: List[str]) -> Tuple[str, List[str]]:
         """Smart handling for 'type' command on Windows"""
