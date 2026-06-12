@@ -101,21 +101,23 @@ def run_shell():
         complete_while_typing=COMPLETE_WHILE_TYPING,
         auto_suggest=DevAutoSuggest(),
         lexer=PygmentsLexer(BashLexer),
-        key_bindings=kb
+        key_bindings=kb,
+        enable_history_search=True,
+        mouse_support=False
     )
-    
+
     while True:
         try:
             command = session.prompt(get_prompt())
-            
+
             # Execute command and check if should continue
             if not execute_command(command):
                 break
-                
+
         except KeyboardInterrupt:
             # Ctrl+C just cancels current line
             continue
-            
+
         except EOFError:
             # Ctrl+D exits shell
             break

@@ -2,7 +2,7 @@ from .commands import COMMAND_MAP
 from .detector import IS_WINDOWS
 from rich.prompt import Confirm
 
-SAFE_COMMANDS = ["ls", "pwd", "cd", "ll", "gs"]
+SAFE_COMMANDS = ["ls", "pwd", "cd", "ll", "gs", "clear", "cls"]
 
 # Global Developer Aliases (Cross-platform)
 DEV_ALIASES = {

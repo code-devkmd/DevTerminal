@@ -89,27 +89,32 @@ class ErrorRecovery:
         Returns: corrected command if accepted, None if rejected
         """
         suggestion = self.check_typo(wrong_cmd, full_line)
-        
+
         if not suggestion:
             return None
-        
+
         # Display suggestion
         console.print(f"[red]✗ Command not found:[/red] {wrong_cmd}")
         console.print(f"[yellow]💡 Did you mean:[/yellow] [green]{suggestion}[/green]")
-        
-        # Ask for confirmation (with timeout)
+
+        # Ask for confirmation with explicit input handling
         try:
-            if Confirm.ask("Run this command?", default=True):
+            response = Confirm.ask("Run this command?", default=True)
+            if response:
                 # Replace the wrong command with suggestion
                 if full_line.strip() == wrong_cmd:
                     return suggestion
                 else:
                     # Replace first occurrence in full line
-                    return full_line.replace(wrong_cmd, suggestion, 1)
-        except KeyboardInterrupt:
+                    corrected = full_line.replace(wrong_cmd, suggestion, 1)
+                    return corrected
+        except (KeyboardInterrupt, EOFError):
             console.print("[dim]Cancelled[/dim]")
             return None
-        
+        except Exception as e:
+            console.print(f"[dim]Error: {e}, skipping correction[/dim]")
+            return None
+
         return None
     
     def get_multiple_suggestions(self, command: str) -> List[str]:
