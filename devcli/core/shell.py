@@ -5,6 +5,7 @@ import subprocess
 from prompt_toolkit import PromptSession
 from prompt_toolkit.formatted_text import HTML
 from prompt_toolkit.key_binding import KeyBindings
+from prompt_toolkit.clipboard.pyperclip import PyperclipClipboard
 from prompt_toolkit.lexers import PygmentsLexer
 from pygments.lexers.shell import BashLexer
 
@@ -14,6 +15,12 @@ from devcli.core.history import get_history
 from .executor import execute_command
 
 kb = KeyBindings()
+
+@kb.add("c-v")
+def _(event):
+    event.current_buffer.paste_clipboard_data(
+        event.app.clipboard.get_data()
+    )
 
 @kb.add("right")
 def _(event):

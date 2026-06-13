@@ -14,7 +14,9 @@ dependencies = [
     "prompt_toolkit",
     "rich",
     "colorama",
-    "pygments"
+    "pygments",
+    "psutil",
+    "pyperclip"
 ]
 
 [project.scripts]
