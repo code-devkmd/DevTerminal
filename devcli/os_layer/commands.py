@@ -18,4 +18,4 @@ else:
         "cd", "ls", "cat", "clear", "rm", "mkdir", "pwd", "exit"
     ]
 
-    COMMAND_MAP = {}
+    COMMAND_MAP = {}  # No conversion needed

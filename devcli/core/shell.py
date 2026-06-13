@@ -68,7 +68,7 @@ def run_shell():
         history=get_history(),
         complete_while_typing=False,
         auto_suggest=DevAutoSuggest(),
-        lexer=PygmentsLexer(BashLexer),
+        lexer=PygmentsLexer(BashLexer),  
         key_bindings=kb
     )
 
