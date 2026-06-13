@@ -69,7 +69,8 @@ def run_shell():
         complete_while_typing=False,
         auto_suggest=DevAutoSuggest(),
         lexer=PygmentsLexer(BashLexer),
-        key_bindings=kb
+        key_bindings=kb,
+        clipboard=PyperclipClipboard()
     )
 
     while True:
