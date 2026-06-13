@@ -12,7 +12,7 @@ class DevAutoSuggest(AutoSuggest):
 
         words = text.split()
 
-        # 🔥 1. MULTI-COMMAND MEMORY (best match, most recent first)
+        # MULTI-COMMAND MEMORY (best match, most recent first)
         history = list(buffer.history.get_strings())
         history.reverse()
 
@@ -28,7 +28,7 @@ class DevAutoSuggest(AutoSuggest):
             best = scored[0][1]
             return Suggestion(best[len(text):])
 
-        # 🔥 2. PATH SUGGESTION (for cd, type, etc.)
+        # PATH SUGGESTION (for cd, type, etc.)
         if words[0] in ["cd", "type", "dir", "ls"]:
             partial = words[-1]
 
@@ -57,7 +57,7 @@ class DevAutoSuggest(AutoSuggest):
 
                 return Suggestion(match[len(prefix):])
 
-        # 🔥 3. BASIC COMMAND MEMORY (fallback)
+        # BASIC COMMAND MEMORY (fallback)
         for entry in history:
             if entry.startswith(text):
                 return Suggestion(entry[len(text):])
